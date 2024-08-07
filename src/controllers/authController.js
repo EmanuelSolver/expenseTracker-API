@@ -2,14 +2,14 @@ const bcrypt = require('bcryptjs');
 const db = require('../config/db');
 
 exports.registerUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
   
   // Hash the password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
+  const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
 
-  db.query(query, [username, hashedPassword], (err, results) => {
+  db.query(query, [username, email, hashedPassword], (err, results) => {
     if (err) {
       console.error('Error inserting user:', err);
       return res.status(500).json({ message: 'Internal server error' });

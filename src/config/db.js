@@ -14,7 +14,7 @@ pool.getConnection((err, connection) => {
     console.error('Error connecting to the database:', err);
     return;
   }
-  console.log('Connected to the MySQL database.');
+  console.log('Connected to the expense_tracker MySQL database.');
   connection.release(); // Release the connection back to the pool
 });
 

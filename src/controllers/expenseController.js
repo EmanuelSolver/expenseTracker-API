@@ -1,10 +1,10 @@
 const db = require('../config/db');
 
 exports.addExpense = (req, res) => {
-    const { description, amount, date } = req.body;
-    const query = 'INSERT INTO expenses (description, amount, date) VALUES (?, ?, ?)';
+    const { name, description, amount, date, user_id } = req.body;
+    const query = 'INSERT INTO expenses (name, description, amount, date, user_id) VALUES (?, ?, ?, ?, ?)';
 
-    db.query(query, [description, amount, date], (err, results) => {
+    db.query(query, [name, description, amount, date, user_id], (err, results) => {
         if (err) {
             console.error('Error adding expense:', err);
             return res.status(500).json({ message: 'Internal server error' });
@@ -43,8 +43,8 @@ exports.getAllExpenses = (req, res) => {
 
 exports.updateExpense = (req, res) => {
     const { id } = req.params;
-    const { description, amount, date } = req.body;
-    const query = 'UPDATE expenses SET description = ?, amount = ?, date = ? WHERE id = ?';
+    const { name, description, amount, date } = req.body;
+    const query = 'UPDATE expenses SET name = ?, description = ?, amount = ?, date = ? WHERE id = ?';
 
     db.query(query, [description, amount, date, id], (err, results) => {
         if (err) {
