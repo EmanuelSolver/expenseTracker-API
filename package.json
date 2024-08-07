@@ -1,14 +1,12 @@
 {
-  "name": "serverside",
+  "name": "expense_tarcker_serverside",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-
   "engines": {
       "node": ">= 20.16.0"
     },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "",
